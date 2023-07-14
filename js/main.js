@@ -17,25 +17,42 @@ inputElement.addEventListener("blur", () => {
 });
 
 const badgeElement = document.querySelector("header .badges");
+const toTopElement = document.querySelector("#to-top");
 
 // lodash 라이브러리로 스크롤 반복 횟수를 줄여줌(익명함수의 반복횟수를 3초마다 딜레이)
 window.addEventListener(
   "scroll",
   _.throttle(() => {
     if (window.scrollY > 500) {
-      //   gsap.to(요소, 지속시간, 옵션)
+      // 상단 뱃지 숨김 처리
+      // gsap.to(요소, 지속시간, 옵션)
       gsap.to(badgeElement, 0.4, {
         opacity: 0,
         display: "none",
       });
+      // 스크롤 최상단으로 가는 버튼 보이기
+      gsap.to(toTopElement, 0.2, {
+        x: 0,
+      });
     } else {
+      // 상단 뱃지 보임 처리
       gsap.to(badgeElement, 0.4, {
         opacity: 1,
         display: "block",
       });
+      // 스크롤 최상단으로 가는 버튼 숨기기
+      gsap.to(toTopElement, 0.2, {
+        x: 100,
+      });
     }
   }, 300)
 );
+
+toTopElement.addEventListener("click", () => {
+  gsap.to(window, 0.7, {
+    scrollTo: 0,
+  });
+});
 
 const fadeElements = document.querySelectorAll(".visual .fade-in");
 fadeElements.forEach((element, index) => {
@@ -67,6 +84,17 @@ new Swiper(".promotion .swiper-container", {
   navigation: {
     prevEl: ".promotion .swiper-prev",
     nextEl: ".promotion .swiper-next",
+  },
+});
+
+new Swiper(".awards .swiper-container", {
+  autoplay: true,
+  loop: true,
+  spaceBetween: 30,
+  slidesPerView: 5,
+  navigation: {
+    prevEl: ".awards .swiper-prev",
+    nextEl: ".awards .swiper-next",
   },
 });
 
@@ -109,3 +137,6 @@ spyElements.forEach((element) => {
     .setClassToggle(element, "show")
     .addTo(new ScrollMagic.Controller());
 });
+
+const thisYear = document.querySelector(".this-year");
+thisYear.textContent = new Date().getFullYear();
