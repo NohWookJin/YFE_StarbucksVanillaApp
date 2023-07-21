@@ -7,7 +7,7 @@
 ## 문자 인코딩(Character Encoding) 설정
 
 문자가 인코딩되는 방식을 설정합니다.
-
+ 
 ```html
 <meta charset="UTF-8"/>
 ```
