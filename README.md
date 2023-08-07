@@ -1,6 +1,6 @@
 # ☕ STARBUCKS
 
-스타벅스 랜딩 페이지(홈페이지)를 만드는 예제입니다. <br>
+스타벅스 랜딩 페이지(홈페이지)를 만드는 예제입니다. <br> 
 
 ![Starbucks](https://raw.githubusercontent.com/ParkYoungWoong/starbucks-vanilla-app/master/_assets/main_screenshot.jpg)
 
